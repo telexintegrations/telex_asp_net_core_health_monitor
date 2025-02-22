@@ -31,9 +31,6 @@ public class TickController : ControllerBase
             return BadRequest("Return URL and Channel Id are required.");
         }
 
-        var id = _configuraitons["Channel_ID"];
-        if (!payload.ChannelId.Equals(id)) return BadRequest("Invalid channel id");
-
         var healthReport = await _healthCheckService.CheckHealthAsync();
 
         var systemHealthCheckEntry = healthReport.Entries["system_health_check"];
